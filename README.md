@@ -31,7 +31,9 @@ To use the dobot dll (which is a prerequisite) follow these instructions
 
 ## Usage
 
-For examples of use see scripts in tests folder
+- For examples of basic usage with cri library see script in tests folder
+- For usage with vsp library and TacTip sensor see script inside tests\vsp\ folder
+  - This requires that the vsp library is also installed (https://github.com/jloyd237/vsp)
 
 ## Bug list
 
