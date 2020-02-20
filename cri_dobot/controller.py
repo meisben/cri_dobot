@@ -67,6 +67,11 @@ class dobotMagicianController(RobotController):
         """
         return self._client.get_alarms_state()
 
+    def clearAlarms(self):
+        """ Clear alarms for robot arm
+        """
+        return self._client.clear_all_alarms_state()
+
     @property
     def info(self):
         """Returns a unique robot identifier string.

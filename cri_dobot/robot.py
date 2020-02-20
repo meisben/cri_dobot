@@ -251,19 +251,32 @@ class SyncDobot(Robot):
         
         return lastIndex
 
-    def move_circular(self, via_pose, end_pose):
-        """Executes a movement in a circular path from the current TCP pose,
-        through via_pose, to end_pose in the reference coordinate frame.
+    def alarms(self):
+        """Gets alarms for robot arm
         """
-        check_pose(via_pose)
-        check_pose(end_pose)
-        via_pose_q = euler2quat(via_pose, self._axes)
-        end_pose_q = euler2quat(end_pose, self._axes)
-        if self._is_base_frame:
-            self.controller.move_circular(via_pose_q, end_pose_q)
-        else:
-            self.controller.move_circular(inv_transform(via_pose_q, self._coord_frame_q),
-                                     inv_transform(end_pose_q, self._coord_frame_q))
+        return self.controller.alarms
+
+    def clearAlarms(self):
+        """Clears alarms for robot arm
+        """
+        return self.controller.clearAlarms
+
+
+    def move_circular(self, via_pose, end_pose):
+        # """Executes a movement in a circular path from the current TCP pose,
+        # through via_pose, to end_pose in the reference coordinate frame.
+        # """
+        # check_pose(via_pose)
+        # check_pose(end_pose)
+        # via_pose_q = euler2quat(via_pose, self._axes)
+        # end_pose_q = euler2quat(end_pose, self._axes)
+        # if self._is_base_frame:
+        #     self.controller.move_circular(via_pose_q, end_pose_q)
+        # else:
+        #     self.controller.move_circular(inv_transform(via_pose_q, self._coord_frame_q),
+        #                              inv_transform(end_pose_q, self._coord_frame_q))
+        print("Warning move circular called!")
+        pass
    
     def close(self):
         """Releases any resources held by the robot (e.g., sockets).

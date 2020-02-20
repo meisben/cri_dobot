@@ -26,12 +26,14 @@ CON_STR = {
     dType.DobotConnect.DobotConnect_Occupied: "DobotConnect_Occupied"} #a dictionary of error terms as defined a C++ enum in 'DobotType.h file'
 
 #Workspace limits (gross error catching)
-max_x_lim = 350 #mm
+max_x_lim = 350 #mm in x axis (base frame)
 min_x_lim = 0
 max_y_lim = 350
 min_y_lim = -350
 max_z_lim = 200
 min_z_lim = -200
+max_r_lim = 110 #degrees in r rotation (end effector servo)
+min_r_lim = -110
 
 # ------------------------------------------#
 # Helper functions                          #
@@ -40,15 +42,17 @@ min_z_lim = -200
 def check_pose(pose):
     #Check if pose is outside of workspace limits
     if pose[0] > max_x_lim or pose[0] < min_x_lim:
-        raise Exception ("Pose value for x-axis outside limits, value for euler pose {}".format(pose)) 
+        raise Exception ("Pose value for x-axis outside limits. The value for demanded euler pose = {}".format(pose)) 
     elif pose[1] > max_y_lim or pose[1] < min_y_lim:
-        raise Exception ("Pose value for y-axis outside limits, value for euler pose {}".format(pose))
+        raise Exception ("Pose value for y-axis outside limits. The value for demanded euler pose = {}".format(pose))
     elif pose[2] > max_z_lim or pose[2] < min_z_lim:
-        raise Exception ("Pose value for y-axis outside limits, value for euler pose {}".format(pose))
+        raise Exception ("Pose value for y-axis outside limits. The value for demanded euler pose = {}".format(pose))
     
     #Check if pose involves a invalid rotation
     if pose[3] != 0 or pose[4] != 0:
-        raise Exception ("Pose value includes invalid rotation, value for euler pose {}".format(pose)) 
+        raise Exception ("Pose value includes invalid rotation. The value for demanded euler pose = {}".format(pose))
+    elif pose[5] > max_r_lim or pose[5] < min_r_lim:
+        raise Exception ("Pose value for r axis end servo rotation is outside limits. The value for demanded euler pose = {}".format(pose))
 
 def all_same(items):
     """Check if all items in a list are the same
@@ -145,6 +149,11 @@ class dobotMagicianClient:
         print("alarmsState: {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} | {} ".format(alarmsState[0], alarmsState[1], alarmsState[2], alarmsState[3], alarmsState[4], alarmsState[5], alarmsState[6], alarmsState[7],alarmsState[8], alarmsState[9], alarmsState[10], alarmsState[11], alarmsState[12], alarmsState[13], alarmsState[14], alarmsState[15]))
         return alarmsState
 
+    def clear_all_alarms_state(self):
+        """returns a alarm identifier string
+        """       
+        retVal = dType.ClearAllAlarmsState(self.api) #Clear the alarms
+        return retVal
 
     def set_units(self, linear, angular):
         """Sets linear and angular units.
