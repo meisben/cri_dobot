@@ -245,8 +245,10 @@ class SyncDobot(Robot):
         check_pose(pose)
         pose_q = euler2quat(pose, self._axes)
         if self._is_base_frame:
+            self._target_base_pose_q = pose_q
             lastIndex = self.blocking_command(self.controller.move_linear(pose_q))
         else:
+            self._target_base_pose_q = inv_transform(pose_q, self._coord_frame_q)
             lastIndex = self.blocking_command(self.controller.move_linear(inv_transform(pose_q, self._coord_frame_q)))
         
         return lastIndex
