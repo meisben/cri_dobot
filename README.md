@@ -29,6 +29,8 @@ To use the dobot dll (which is a prerequisite) follow these instructions
 - [A] use the correct DLL from dobot (64 bit or 32 bit), and
 - [B] put the dll in either the Anaconda root directory or the system root directory (%SystemRoot%\system32) whichever one works :)
 
+You can find the dll at (https://www.dobot.cc/downloadcenter/dobot-magician.html) - Look for Development Protocol -> 'DobotDemovX.X.zip' - Ensure you extract the correct DLL for your system (windows/linux/mac) (x64/x32)
+
 ## Usage
 
 - For examples of basic usage with cri library see script in tests folder
