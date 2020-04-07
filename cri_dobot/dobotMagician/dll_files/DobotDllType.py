@@ -1,5 +1,6 @@
 from ctypes import *
 import time,  platform
+import os
 
 
 def enum(**enums):
@@ -461,7 +462,8 @@ def load():
     elif platform.system() == "Darwin" :
         return CDLL("libDobotDll.dylib",  RTLD_GLOBAL)
     else:
-        return cdll.loadLibrary("libDobotDll.so")
+        library_path = os.path.join( os.path.dirname(os.path.abspath(__file__)), "libDobotDll.so.1.0.0")
+        return cdll.LoadLibrary(library_path)
     
 def dSleep(ms):
     time.sleep(ms / 1000)

@@ -25,17 +25,19 @@ pip install -e .
 
 ## Installation (part 2) of .dll for use with dobot magician arm: 
 
+For both windows and linux you should *not* need to do anything with the dll. This is packaged with cri_dobot. If you get an error message relating to the dll library (or are using mac) try the steps below. Please reach out for help if this isn't working!
+
 To use the dobot dll (which is a prerequisite) follow these instructions 
 - [A] use the correct DLL from dobot (64 bit or 32 bit), and
-- [B] put the dll in either the Anaconda root directory or the system root directory (%SystemRoot%\system32) whichever one works :)
+- [B] put the dll in either 
+  - \cri_dobot\dobotMagician\dll_files
+  - or the system root directory, for example on windows this is (%SystemRoot%\system32)
 
 You can find the dll at (https://www.dobot.cc/downloadcenter/dobot-magician.html) - Look for Development Protocol -> 'DobotDemovX.X.zip' - Ensure you extract the correct DLL for your system (windows/linux/mac) (x64/x32)
 
 ## Usage
 
 - For examples of basic usage with cri library see script in tests folder
-- For usage with vsp library and TacTip sensor see script inside tests\vsp\ folder
-  - This requires that the vsp library is also installed (https://github.com/jloyd237/vsp)
 
 ## Bug list
 

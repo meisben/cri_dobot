@@ -1,12 +1,8 @@
 # -*- coding: utf-8 -*-
-"""Simple test script for AsyncRobot class using ABBController.
+"""Simple test script for Dobot Magician Robot class using Dobot Magician Controller.
 """
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Program Purpose: Test script demonstrating use of cri_dobot wrapper for cri library on the dobot magican robot arm
-
-# Note: that the correct dobot dll file must be placed in the system root directory
-# (e.g. system root directory (%SystemRoot%\system32) for windows)
-# For the dll, see the dobot magician downloads website
 
 # Author: Ben Money-Coomes (ben.money@gmail.com)   
 
@@ -45,9 +41,9 @@ def main():
         print("angular_speed_test1 (deg/s)", angular_speed_test1)
     
         # Set TCP, linear speed,  angular speed and coordinate frame
-        robot.tcp = (0, 0, 0, 0, 0, 0)
-        # robot.linear_speed = 100 # this command works if required
-        # robot.angular_speed = 100 # this command works if required
+        robot.tcp = (0, 0, 0, 0, 0, 0) # note that it is advisable not to use a Tool Center Point due to the dobot magician bug explained in the readme
+        robot.linear_speed = 100
+        robot.angular_speed = 100 
 
         speed_test2 = robot.linear_speed
         print("speed_test2 (mm/s)", speed_test2)
@@ -69,12 +65,11 @@ def main():
         #---- Start from below here !
         
         # Display robot info
-        print("Robot info: {}".format(robot.info))
+        # print("Robot info: {}".format(robot.info)) #Currently not used
 
         # Example of displaying current command index on dobot magician
         currentIndex = robot.sync_robot.controller.current_index()
         print("Current Command Index: {}".format(currentIndex))
-        # print("Ret val type: {}".format(type(currentIndex)))
 
         # Set base frame for storing home position
         robot.coord_frame = base_frame
