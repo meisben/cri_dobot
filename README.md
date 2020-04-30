@@ -4,7 +4,7 @@
 
 
 ## Prerequisites
-The cri library must be installed to use this wrapper: https://github.com/jloyd237/cri
+The cri library must be installed to use this wrapper: https://github.com/jlloyd237/cri
 
 ## Installation (part 1)
 
