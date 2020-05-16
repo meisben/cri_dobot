@@ -80,7 +80,7 @@ class SyncDobot(Robot):
 
         return lastIndex
 
-    def check_pose_valid(self, pose):
+    def check_pose_is_valid(self, pose):
         """Checks to see if a pose is valid for the dobot magician workspace or will return an exception.
         Returns True if pose is valid. Returns False if an exception will be raised.
         """
@@ -88,11 +88,11 @@ class SyncDobot(Robot):
         pose_q = euler2quat(pose, self._axes)
         if self._is_base_frame:
             self._target_base_pose_q = pose_q
-            retVal = self.controller.check_pose_valid(pose_q)
+            retVal = self.controller.check_pose_is_valid(pose_q)
         else:
             self._target_base_pose_q = inv_transform(
                 pose_q, self._coord_frame_q)
-            lastIndex = self.controller.check_pose_valid(
+            retVal = self.controller.check_pose_is_valid(
                 inv_transform(pose_q, self._coord_frame_q))
 
         return retVal

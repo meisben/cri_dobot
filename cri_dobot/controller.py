@@ -194,11 +194,11 @@ class dobotMagicianController(RobotController):
         # self._client.move_circular(via_pose, end_pose)
         pass
 
-    def check_pose_valid(self, pose):
+    def check_pose_is_valid(self, pose):
         """Checks to see if a pose is valid for the dobot magician workspace or will return an exception. 
         Returns True if pose is valid. Returns False if an exception will be raised.
         """
-        retVal = self._client.check_pose_valid(pose)
+        retVal = self._client.check_pose_is_valid(pose)
         return retVal
 
     def close(self):

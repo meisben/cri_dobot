@@ -108,10 +108,12 @@ class dobotMagicianClient:
     def __exit__(self, exc_type, exc_value, traceback):
         self.close()
 
-    def check_pose_valid(pose):
+    def check_pose_is_valid(self, pose_q):
         """
         Check if a pose is valid to be implemented for the dobot magician robot arm. Returns True if pose won't raise an exception.
         """
+        pose = quat2euler(pose_q, 'sxyz')
+
         # Check if pose is outside of workspace limits
         if pose[0] > max_x_lim or pose[0] < min_x_lim:
             return False
