@@ -7,22 +7,21 @@ from cri.controller import RobotController
 
 from cri_dobot.dobotMagician.dobotMagician_client import dobotMagicianClient
 
+
 class dobotMagicianController(RobotController):
-    """Dobot Magician controller class implements common interface robot arms.
-    
-    DRAFT v1.0
-    
+    """Dobot Magician controller class implements common interface robot arms.    
     """
-    def __init__(self, port="", baudRate = 115200):
+
+    def __init__(self, port="", baudRate=115200):
         self._baudRate = baudRate
         self._port = port
         self._client = dobotMagicianClient(port, baudRate)
         try:
             pass
-            ## self.tcp = (0, 0, 0, 1, 0, 0, 0)    # base frame (quaternion)
+            # self.tcp = (0, 0, 0, 1, 0, 0, 0)    # base frame (quaternion)
             # self.linear_speed = 50              # mm/s
             # self.angular_speed = 50             # deg/s
-            ## self.blend_radius = 0               # mm
+            # self.blend_radius = 0               # mm
 
         except:
             self._client.close()
@@ -42,7 +41,7 @@ class dobotMagicianController(RobotController):
         """ Performs the homing function and moves the arm to the home position
         """
         lastIndex = self._client.set_home_cmd()
-        return lastIndex # return the last movement index of this command
+        return lastIndex  # return the last movement index of this command
 
     def clear_command_queue(self):
         """Clears the command queue
@@ -55,7 +54,7 @@ class dobotMagicianController(RobotController):
         """
         retVal = self._client.set_queued_cmd_start_exec()
         return retVal
-    
+
     def stop_command_queue(self):
         """ Stop executing commands in the command queue
         """
@@ -83,13 +82,13 @@ class dobotMagicianController(RobotController):
         #         )
         return self._client.get_alarms_state()
 
-    @property    
+    @property
     def tcp(self):
         # """Returns the tool center point (TCP) of the robot.
         # """
         return self._client.get_tcp()
 
-    @tcp.setter    
+    @tcp.setter
     def tcp(self, tcp):
         """Sets the tool center point (TCP) of the robot.
         """
@@ -174,7 +173,6 @@ class dobotMagicianController(RobotController):
         """Returns the TCP pose in the reference coordinate frame.
         """
         return self._client.get_pose()
-        
 
     def move_joints(self, joint_angles):
         """Executes an immediate move to the specified joint angles.
@@ -188,7 +186,6 @@ class dobotMagicianController(RobotController):
         """
         lastIndex = self._client.move_linear(pose)
         return lastIndex
-        
 
     def move_circular(self, via_pose, end_pose):
         """Executes a movement in a circular path from the current base frame
@@ -196,6 +193,13 @@ class dobotMagicianController(RobotController):
         """
         # self._client.move_circular(via_pose, end_pose)
         pass
+
+    def check_pose_valid(self, pose):
+        """Checks to see if a pose is valid for the dobot magician workspace or will return an exception. 
+        Returns True if pose is valid. Returns False if an exception will be raised.
+        """
+        retVal = self._client.check_pose_valid(pose)
+        return retVal
 
     def close(self):
         """Releases any resources held by the controller (e.g., sockets).
