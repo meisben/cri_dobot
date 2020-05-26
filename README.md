@@ -8,19 +8,17 @@ The cri library must be installed to use this wrapper: https://github.com/jlloyd
 
 ## Installation (part 1)
 
-To install the package on Windows, OS X or Linux, clone the repository and run the setup script from the repository root directory:
+To install the package on Windows, OS X or Linux, clone the repository and use the 'pip install' command inside the repository root directory.
+
+It is suggested to do this in a virtual environment by:
+
+(1) create a virtual environment (e.g. using venv or conda). 
+(2) open a terminal window with the virtual environment activated
+(3) navigate the the local directory of dobot_tactile_toolbox setup.py using the 'cd' command
+(2) Then run the following command
 
 ```sh
-python setup.py install
-```
-
-To use with a virtual environment
-
-(1) create a virtual environment (e.g. using conda). 
-(2) Then run the following command in the local directory of cri_dobot setup.py: 
-
-```sh
-pip install -e . 
+python install .
 ```
 
 ## Installation (part 2) of .dll for use with dobot magician arm: 
