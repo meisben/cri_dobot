@@ -458,7 +458,9 @@ DobotCommunicate = enum(
 
 def load():
     if platform.system() == "Windows":
-        return CDLL("DobotDll.dll",  RTLD_GLOBAL) 
+        # return CDLL("DobotDll.dll",  RTLD_GLOBAL) # This was the dobot version
+        library_path = os.path.join( os.path.dirname(os.path.abspath(__file__)), "DobotDll.dll")
+        return CDLL(library_path,  RTLD_GLOBAL)
     elif platform.system() == "Darwin" :
         return CDLL("libDobotDll.dylib",  RTLD_GLOBAL)
     else:
