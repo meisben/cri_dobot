@@ -18,7 +18,7 @@ It is suggested to do this in a virtual environment by:
 (2) Then run the following command
 
 ```sh
-pip install .
+pip install -e .
 ```
 
 ## Installation (part 2) of .dll for use with dobot magician arm: 
