@@ -6,6 +6,14 @@
 ## Prerequisites
 The cri library must be installed to use this wrapper: https://github.com/jlloyd237/cri
 
+I recommend installing this libary by navigating to the directory of 'setup.py' in a terminal window, then running the command:
+
+```sh
+pip install -e .
+```
+
+This will create an editable install of the cri library
+
 ## Installation (part 1)
 
 To install the package on Windows, OS X or Linux, clone the repository and use the 'pip install' command inside the repository root directory.
