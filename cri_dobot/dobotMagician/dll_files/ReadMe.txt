@@ -1,1 +1,0 @@
-Update 2019/03/12: override the SetEMotor method to update the EMotor parameter types.

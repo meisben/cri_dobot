@@ -188,7 +188,7 @@ extern "C" DOBOTDLLSHARED_EXPORT int SetFirmwareMode(FirmwareMode *firmwareMode)
 extern "C" DOBOTDLLSHARED_EXPORT int GetFirmwareMode(FirmwareMode *firmwareMode);
 
 //LOSTSTEP
-extern "C" DOBOTDLLSHARED_EXPORT int SetLostStepParams(float threshold);
+extern "C" DOBOTDLLSHARED_EXPORT int SetLostStepParams(float threshold, bool isQueued, uint64_t *queuedCmdIndex);
 extern "C" DOBOTDLLSHARED_EXPORT int SetLostStepCmd(bool isQueued, uint64_t *queuedCmdIndex);
 
 //UART4 Peripherals
