@@ -1,6 +1,8 @@
 # Common Robot Interface (Wrapper for dobot magician)
 
-***Important Note***: This is a dobot magician wrapper for the cri library from John Lloyd. It enables use of the cri library for the dobot magician robot arm. The wrapper is compatible with the latest [as of Feb 2020 v0.0.1] version of the cri library.
+***Important Note***: This is a dobot magician wrapper for the cri library from John Lloyd. It enables use of the cri library for the dobot magician robot arm. The wrapper is compatible with:
+- dobot magician firmware version 3.7.0
+- the latest [as of Feb 2020 v0.0.1] version of the cri library.
 
 
 ## Prerequisites
@@ -31,7 +33,7 @@ pip install -e .
 
 ## Installation (part 2) of .dll for use with dobot magician arm: 
 
-For both windows and linux you should *not* need to do anything with the dll. This is packaged with cri_dobot. If you get an error message relating to the dll library (or are using mac) try the steps below. Please reach out for help if this isn't working!
+For both windows and mac you should *not* need to do anything with the dll. The 64 bit dlls are packaged with cri_dobot. If you get an error message relating to the dll library try the steps below. Please reach out for help if this isn't working! Please also note that currently dobot have yet to supply the .so files for this verision of firmware, so this is untested on a linux system.
 
 To use the dobot dll (which is a prerequisite) follow these instructions 
 - [A] use the correct DLL from dobot (64 bit or 32 bit), and
