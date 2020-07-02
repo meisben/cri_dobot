@@ -32,7 +32,7 @@ np.set_printoptions(precision=2, suppress=True)
 def main():
     base_frame = (0, 0, 0, 0, 0, 0)
     # base frame: x->front, y->right, z->up
-    work_frame = (180, 0, 80, 0, 0, 0)
+    work_frame = (220, 0, 80, 0, 0, 0)
 
     with AsyncRobot(SyncDobot(dobotMagicianController())) as robot:
 
