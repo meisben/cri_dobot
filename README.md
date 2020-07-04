@@ -55,7 +55,7 @@ With a Tactip attachment the corresponding Tool Center Point using cri_dobot is 
 
 ## Bug list
 
-(1) Tool Center Point
+(1) Tool Center Point [Now squished]
 
 For info only: TCP bug has been rectified by dobot in the new firmware version. TCP is now working correctly!
 
