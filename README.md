@@ -49,7 +49,9 @@ You can find the dll at (https://www.dobot.cc/downloadcenter/dobot-magician.html
 
 ### Tool center point
 
-With a Tactip attachment the corresponding Tool Center Point using cri_dobot is = (59.7, 0, 0, 0, 0, 0). This is defined by the the point described in the excel sheet in the \images directory
+With a Tactip attachment the corresponding Tool Center Point using cri_dobot is = (59.7, 0, 0, 0, 0, 0). The origin is not well described in the dobot magician user documentation, but is instead shown in the image below. The working which shows how this is infered is defined by the the point described in the excel sheet in the \images directory
+
+![tcp_origin.jpg](images/tcp_origin.jpg)
 
 ## Bug list
 
