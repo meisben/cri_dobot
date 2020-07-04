@@ -4,11 +4,12 @@
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 # Program Purpose: Test script demonstrating use of cri_dobot wrapper for cri library on the dobot magican robot arm
 
-# Author: Ben Money-Coomes (ben.money@gmail.com)
+# Author: Adapted version of John Lloyd's script, adapted by Ben Money-Coomes (ben.money@gmail.com)
 
-# **Version control**  (Feb 2020)
+# **Version control**  (July 2020)
 
 # v0.0.1    Non commented code is fully functional
+# v1.0      Code is fully functional as per comments
 #~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~#
 
 # ------------------------------------------#
@@ -32,7 +33,7 @@ np.set_printoptions(precision=2, suppress=True)
 def main():
     base_frame = (0, 0, 0, 0, 0, 0)
     # base frame: x->front, y->right, z->up
-    work_frame = (220, 0, 80, 0, 0, 0)
+    work_frame = (260, 0, 80, 0, 0, 0)
 
     with AsyncRobot(SyncDobot(dobotMagicianController())) as robot:
 
@@ -43,8 +44,8 @@ def main():
         print("angular_speed_test1 (deg/s)", angular_speed_test1)
 
         # Set TCP, linear speed,  angular speed and coordinate frame
-        # note that it is advisable not to use a Tool Center Point due to the dobot magician bug explained in the readme
-        robot.tcp = (0, 0, 0, 0, 0, 0)
+        # With a Tactip attachment and corresponding tool center point of (59.7, 0, 0, 0, 0, 0). This is the same tool center point as the suction cup or gripper
+        robot.tcp = (59.7, 0, 0, 0, 0, 0)
         robot.linear_speed = 100
         robot.angular_speed = 100
 
@@ -55,15 +56,14 @@ def main():
         print("angular_speed_test2 (deg/s)", angular_speed_test2)
 
         # ----- TCP section
-        print("Please note there is a dobot magician bug with the tcp, tcp is not used !")
-        print("For a description of this bug see the cri_dobot readme...")
-        # tcp_test2 = robot.tcp
-        # print("tcp_test2", tcp_test2)
+        # print("For info only: TCP bug has been rectified and TCP is now working correctly!")
+        tcp_test2 = robot.tcp
+        print("tcp_test2", tcp_test2)
 
-        # print("do something")
+        print("do something")
 
-        # tcp_test3 = robot.tcp
-        # print("tcp_test3", tcp_test3)
+        tcp_test3 = robot.tcp
+        print("tcp_test3", tcp_test3)
 
         # ---- Start from below here !
 
@@ -79,7 +79,7 @@ def main():
 
         # Set home position
         print("Setting home position")
-        robot.sync_robot.set_home_params((200, 0, 80, 0, 0, 0))
+        robot.sync_robot.set_home_params((220, 0, 80, 0, 0, 0))
 
         # Perform homing
         print("Starting homing")
