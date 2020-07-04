@@ -47,8 +47,13 @@ You can find the dll at (https://www.dobot.cc/downloadcenter/dobot-magician.html
 
 - For examples of basic usage with cri library see script in tests folder
 
+### Tool center point
+
+With a Tactip attachment the corresponding Tool Center Point using cri_dobot is = (59.7, 0, 0, 0, 0, 0). This is defined by the the point described in the excel sheet in the \images directory
+
 ## Bug list
 
-(1) TCP
+(1) Tool Center Point
 
-Dobot magician has a Tool Center Point (TCP) bug which means that it always assumed it's tool center point values (x,y,z) are 0,0,0. For this reason the tool center point is not currently used with the dobot magician in production code. It is yet to be determined whether this functionality will be replicated in future versions of the cri_dobot wrapper. An question has been opened on this topic in the dobot magician forums.
+For info only: TCP bug has been rectified by dobot in the new firmware version. TCP is now working correctly!
+
