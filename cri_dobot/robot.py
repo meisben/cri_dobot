@@ -163,7 +163,6 @@ class SyncDobot(Robot):
         """
         check_pose(tcp)
         tcp_q = euler2quat(tcp, self._axes)
-        print("note currently the dobot magician tcp functionality doesn't work (product bug). Issue on punch list (Ben Money-Coomes 6th Feb 2020)")
         self.controller.tcp = tcp_q
 
     @property
