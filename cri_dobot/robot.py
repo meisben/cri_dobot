@@ -279,12 +279,12 @@ class SyncDobot(Robot):
     def alarms(self):
         """Gets alarms for robot arm
         """
-        return self.controller.alarms
+        return self.controller.alarms()
 
     def clearAlarms(self):
         """Clears alarms for robot arm
         """
-        return self.controller.clearAlarms
+        return self.controller.clearAlarms()
 
     def move_circular(self, via_pose, end_pose):
         # """Executes a movement in a circular path from the current TCP pose,
