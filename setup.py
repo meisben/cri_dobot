@@ -16,6 +16,6 @@ setup(
     author="Ben Money-Coomes",
     author_email="ben.money@gmail.com",
     url="https://github.com/meisben",
-    packages=["cri_dobot",],
+    packages=["cri_dobot","cri_dobot.dobotMagician"],
     install_requires=["numpy", "transforms3d"]
 )
