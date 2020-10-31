@@ -16,6 +16,8 @@ setup(
     author="Ben Money-Coomes",
     author_email="ben.money@gmail.com",
     url="https://github.com/meisben",
-    packages=["cri_dobot","cri_dobot.dobotMagician"],
-    install_requires=["numpy", "transforms3d"]
+    packages=["cri_dobot","cri_dobot.dobotMagician","cri_dobot.dobotMagician.dll_files"],
+    install_requires=["numpy", "transforms3d"],
+    setup_requires=['setuptools_scm'],
+    include_package_data=True
 )
