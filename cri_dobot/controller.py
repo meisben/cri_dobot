@@ -3,6 +3,8 @@
 interface to the Dobot Magician as a wrapper around the cri library.
 """
 
+import warnings
+
 from cri.controller import RobotController
 
 from cri_dobot.dobotMagician.dobotMagician_client import dobotMagicianClient
@@ -174,25 +176,32 @@ class dobotMagicianController(RobotController):
         """
         return self._client.get_pose()
 
+    @property
+    def elbow(self):
+        """Returns the current elbow angle.
+        """
+        warnings.warn("elbow property not implemented in dobotMagicianController")
+        return None
+
     def move_joints(self, joint_angles):
         """Executes an immediate move to the specified joint angles.
         """
         lastIndex = self._client.move_joints(joint_angles)
         return lastIndex
 
-    def move_linear(self, pose):
+    def move_linear(self, pose, elbow=None):
         """Executes a linear/cartesian move from the current base frame pose to
         the specified pose.
         """
         lastIndex = self._client.move_linear(pose)
         return lastIndex
 
-    def move_circular(self, via_pose, end_pose):
+    def move_circular(self, via_pose, end_pose, elbow=None):
         """Executes a movement in a circular path from the current base frame
         pose, through via_pose, to end_pose.
         """
         # self._client.move_circular(via_pose, end_pose)
-        pass
+        warnings.warn("move_circular method not implemented in dobotMagicianController")
 
     def check_pose_is_valid(self, pose):
         """Checks to see if a pose is valid for the dobot magician workspace or will return an exception. 
