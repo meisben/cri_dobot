@@ -7,6 +7,7 @@
 # ------------------------------------------#
 
 import queue
+import warnings
 from abc import ABC, abstractmethod
 from threading import Thread
 
@@ -250,6 +251,20 @@ class SyncDobot(Robot):
         else:
             return quat2euler(transform(self._target_base_pose_q, self._coord_frame_q), self._axes)
 
+    @property
+    def elbow(self):
+        """Returns the current elbow angle (degrees).
+        """
+        warnings.warn("elbow property not implemented in SyncDobot")
+        return None
+
+    @property
+    def target_elbow(self):
+        """Returns the target elbow angle (degrees).
+        """
+        warnings.warn("target_elbow property not implemented in SyncDobot")
+        return None
+
     def move_joints(self, joint_angles):
         """Executes an immediate move to the specified joint angles.
         """
@@ -258,7 +273,7 @@ class SyncDobot(Robot):
             self.controller.move_joints(joint_angles))
         return lastIndex
 
-    def move_linear(self, pose):
+    def move_linear(self, pose, elbow=None):
         """Executes a linear/cartesian move from the current TCP pose to the
         specified pose in the reference coordinate frame.
         """
@@ -286,7 +301,7 @@ class SyncDobot(Robot):
         """
         return self.controller.clearAlarms()
 
-    def move_circular(self, via_pose, end_pose):
+    def move_circular(self, via_pose, end_pose, elbow=None):
         # """Executes a movement in a circular path from the current TCP pose,
         # through via_pose, to end_pose in the reference coordinate frame.
         # """
@@ -299,8 +314,7 @@ class SyncDobot(Robot):
         # else:
         #     self.controller.move_circular(inv_transform(via_pose_q, self._coord_frame_q),
         #                              inv_transform(end_pose_q, self._coord_frame_q))
-        print("Warning move circular called!")
-        pass
+        warnings.warn("move_circular method not implemented in SyncDobot")
 
     def close(self):
         """Releases any resources held by the robot (e.g., sockets).
